@@ -14,6 +14,7 @@ jobs:
           cd CxConsolePlugin
           chmod +x runCxConsole.sh
           pwd
+          echo $CX_HOST
           ./runCxConsole.sh Scan -CxServer $CX_HOST -TrustedCertificates -CxUser $CX_USER -CxPassword CX_PASS -LocationType "folder" -Projectname $PROJECT_NAME -LocationPath $LOCATION_PATH -Comment "Build Id : $CI_PIPELINE_ID" -Preset $CX_PRESET -ForceScan
 workflows:
   build_scan: 
