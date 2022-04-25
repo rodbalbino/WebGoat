@@ -33,7 +33,18 @@ jobs:
         checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
         checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
-        params: --bug-tracker=jira --config=cx.config --repo-name=DSVW --namespace=jbruinaud --branch=develop --jira.url=${{secrets.JIRA_URL}} --jira.username=${{secrets.JIRA_USER}} --jira.token=${{secrets.JIRA_TOKEN}}
+
+        bug_tracker: JIRA
+        jira_url: ${{ secrets.JIRA_URL }}
+        jira_username: ${{ secrets.JIRA_USERNAME }}
+        jira_token: ${{ secrets.JIRA_TOKEN }}
+        jira_project: ${{ secrets.JIRA_PROJECT }}
+        jira_issue_type: 'Application Security Bug'
+        jira_open_transition: 'In Progress'
+        jira_close_transition: 'Done'
+        jira_open_status: 'Backlog,Selected for Development,In Progress'
+        jira_closed_status: 'Done'
+        #params: --bug-tracker=jira --config=cx.config --repo-name=DSVW --namespace=jbruinaud --branch=develop --jira.url=${{secrets.JIRA_URL}} --jira.username=${{secrets.JIRA_USER}} --jira.token=${{secrets.JIRA_TOKEN}}
     # Upload SARIF report for CodeQL / Security Alerts PRocessing
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
