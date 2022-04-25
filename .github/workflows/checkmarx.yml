@@ -33,6 +33,7 @@ jobs:
         checkmarx_username: ${{ secrets.CHECKMARX_USERNAME }}
         checkmarx_password: ${{ secrets.CHECKMARX_PASSWORD }}
         checkmarx_client_secret: ${{ secrets.CHECKMARX_CLIENT_SECRET }}
+        params: --bug-tracker=jira --config=cx.config --repo-name=DSVW --namespace=jbruinaud --branch=main --jira.url=${{secrets.JIRA_URL}} --jira.username=${{secrets.JIRA_USER}} --jira.token=${{secrets.JIRA_TOKEN}}
     # Upload SARIF report for CodeQL / Security Alerts PRocessing
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v1
