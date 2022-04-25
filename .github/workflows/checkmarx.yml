@@ -21,11 +21,10 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: Checkmarx
     - uses: actions/checkout@v2
     # Scan code with Checkmarx
     - name: Checkmarx CxFlow Action
-      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.4 #Github Action version
+      uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.4
       with:
         project: GithubActionTest
         team: /CxServer/SP/Partners/Nova8
