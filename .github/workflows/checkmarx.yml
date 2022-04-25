@@ -35,7 +35,3 @@ jobs:
         break_build: false
         params: --bug-tracker=jira --config=cx.config --repo-name=APPSEC --namespace=jbruinaud --branch=develop --jira.url=${{secrets.JIRA_URL}} --jira.username=${{secrets.JIRA_USER}} --jira.token=${{secrets.JIRA_TOKEN}}
         
-    - name: Upload SARIF file
-      uses: github/codeql-action/upload-sarif@v1
-      with:
-        sarif_file: cx.sarif
