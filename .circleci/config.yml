@@ -13,8 +13,6 @@ jobs:
           unzip CxConsolePlugin-1.1.5.zip -d CxConsolePlugin
           cd CxConsolePlugin
           chmod +x runCxConsole.sh
-          echo $CIRCLE_WORKING_DIRECTORY
-          ls $CIRCLE_WORKING_DIRECTORY
           ./runCxConsole.sh Scan -CxServer $CX_HOST -TrustedCertificates -CxUser $CX_USER -CxPassword $CX_PASS -LocationType "folder" -Projectname CxServer/SP/Partners/Nova8/$CIRCLE_PROJECT_REPONAME -LocationPath /home/circleci/project -Comment "Build Id : $CI_PIPELINE_ID" -ForceScan
 workflows:
   build_scan: 
