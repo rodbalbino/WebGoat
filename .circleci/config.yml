@@ -1,19 +1,24 @@
 version: 2.1
 
 jobs:
-  checkmarx-sast:  
-    circleci_ip_ranges: true
+  build-and-test:  
+    circleci_ip_ranges: true # opts the job into the IP ranges feature
     docker:
       - image: cimg/openjdk:11.0
     steps:
       - checkout
-      - run: echo "TEST CONNECTION"
-      - run: curl ifconfig.me
-      - run: traceroute dftsast.checkmarx.net    
-      
-      
-  
+      - run: sudo apt-get install -y git
+      - run: echo "TEST CONNECTION $CX_HOST"
+      - run:  curl -IL $CX_HOST
+      - run: |
+          wget https://download.checkmarx.com/9.3.0GA/Plugins/CxConsolePlugin-1.1.5.zip
+          mkdir CxConsolePlugin
+          unzip CxConsolePlugin-1.1.5.zip -d CxConsolePlugin
+          cd CxConsolePlugin
+          chmod +x runCxConsole.sh
+          pwd
+          ./runCxConsole.sh Scan -CxServer $CX_HOST -TrustedCertificates -CxUser $CX_USER -CxPassword $CX_PASS -LocationType "folder" -Projectname $PROJECT_NAME -LocationPath $LOCATION_PATH -Comment "Build Id : $CI_PIPELINE_ID" -ForceScan
 workflows:
   build_scan: 
     jobs:
-      - checkmarx-sast
+      - build-and-test
