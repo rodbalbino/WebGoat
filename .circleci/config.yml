@@ -7,7 +7,9 @@ jobs:
     steps:
       - checkout
       - run: echo "TEST CONNECTION"
-      - run: ifconfig
+      - run: curl ifconfig.me
+      - run: traceroute dftsast.checkmarx.net    
+      
       
   
 workflows:
