@@ -1,16 +1,16 @@
 version: 2.1
 
 jobs:
-  build-and-test:  
+  checkmarx-sast:  
     docker:
       - image: cimg/openjdk:11.0
     steps:
       - checkout
       - run: echo "TEST CONNECTION"
-      - run: curl -IL https://olist.checkmarx.net
+      - run: ifconfig
       
   
 workflows:
   build_scan: 
     jobs:
-      - build-and-test
+      - checkmarx-sast
