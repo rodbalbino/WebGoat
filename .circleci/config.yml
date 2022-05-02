@@ -2,6 +2,7 @@ version: 2.1
 
 jobs:
   checkmarx-sast:  
+    circleci_ip_ranges: true
     docker:
       - image: cimg/openjdk:11.0
     steps:
