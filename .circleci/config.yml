@@ -6,9 +6,9 @@ jobs:
       - image: cimg/openjdk:11.0
     steps:
       - checkout
-      - run: sudo apt-get install -y git
-      - run: echo "TEST CONNECTION $CX_HOST"
-      - run:  curl -IL $CX_HOST
+      - run: echo "TEST CONNECTION"
+      - run: curl -IL https://olist.checkmarx.net
+      
   
 workflows:
   build_scan: 
